@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.npz
+*.npy
+cache/
+.venv/
+venv/
+# generated outputs
+*.png
+*.json
+!.zenodo.json

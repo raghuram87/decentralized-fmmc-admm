@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "decentralized-fmmc-admm: Decentralized ADMM for fastest mixing Markov chain design and graph-constrained doubly stochastic projection"
+type: software
+authors:
+  - family-names: Nagireddy
+    given-names: Raghuram
+license: MIT
+repository-code: "https://github.com/raghuram87/decentralized-fmmc-admm"
+version: 1.0.0
+date-released: "2026-09-14"
+keywords:
+  - fastest mixing Markov chain
+  - decentralized optimization
+  - ADMM
+  - consensus
+  - Chebyshev polynomial filtering
+  - semidefinite programming
+  - doubly stochastic matrices

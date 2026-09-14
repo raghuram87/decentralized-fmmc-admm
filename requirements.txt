@@ -1,0 +1,8 @@
+numpy>=2.3,<3
+scipy>=1.16,<2
+cvxpy>=1.9,<2
+clarabel>=0.11,<1
+osqp>=1.1,<2
+networkx>=3.5,<4
+matplotlib>=3.8,<4
+pytest>=8,<10

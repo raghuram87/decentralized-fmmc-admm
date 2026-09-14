@@ -1,0 +1,18 @@
+{
+  "title": "decentralized-fmmc-admm: Decentralized ADMM for fastest mixing Markov chain design and graph-constrained doubly stochastic projection",
+  "description": "Python implementation and reproduction scripts for (i) a decentralized ADMM for the fastest mixing Markov chain (FMMC) problem with a matrix-free Chebyshev-filtered spectral update, and (ii) an exact global-consensus ADMM for the Euclidean projection onto graph-constrained symmetric doubly stochastic matrices, including the node-local scalar-bisection solver, the project-then-average baseline, and all numerical experiments reported in the accompanying papers.",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {"name": "Nagireddy, Raghuram"}
+  ],
+  "keywords": [
+    "fastest mixing Markov chain",
+    "decentralized optimization",
+    "ADMM",
+    "consensus",
+    "Chebyshev polynomial filtering",
+    "semidefinite programming",
+    "doubly stochastic matrices"
+  ]
+}
