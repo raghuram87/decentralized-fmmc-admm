@@ -138,8 +138,14 @@ def solve_node_qp(d: np.ndarray, t: np.ndarray, M_ii: float, rho_cons: float,
 def decentralized_graph_projection_consensus(edges, n, M_ii, M_ij_by_edge, w_init,
                                               neighbors, edge_index_by_node,
                                               num_sweeps, ledger: CommLedger,
-                                              rho_cons: float = 1.0, callback=None):
+                                              rho_cons: float = 1.0, callback=None,
+                                              lam_init=None, return_duals: bool = False):
     """
+    Warm starts: `w_init` initializes the consensus variable z and
+    `lam_init` (default zeros) the per-edge scaled dual u_i^e of the
+    lower-index endpoint (the other endpoint holds -lam_init, preserving
+    u_i^e + u_j^e = 0). With return_duals=True, returns (z, S, lam).
+
     Distributed CONSENSUS ADMM for the graph-feasibility projection
     (replaces the biased `decentralized_graph_projection` heuristic
     above).
@@ -183,7 +189,7 @@ def decentralized_graph_projection_consensus(edges, n, M_ii, M_ij_by_edge, w_ini
     endpoint views.
     """
     m = len(edges)
-    lam = np.zeros(m)   # lam[e] = u_i^e for i = edges[e][0] (lower index); u_j^e = -lam[e]
+    lam = np.zeros(m) if lam_init is None else np.asarray(lam_init, dtype=float).copy()   # lam[e] = u_i^e for i = edges[e][0] (lower index); u_j^e = -lam[e]
     z = w_init.copy()
 
     for _ in range(num_sweeps):
@@ -225,6 +231,8 @@ def decentralized_graph_projection_consensus(edges, n, M_ii, M_ij_by_edge, w_ini
     for i in range(n):
         for e_idx in edge_index_by_node[i]:
             S[i] += z[e_idx]
+    if return_duals:
+        return z, S, lam
     return z, S
 
 

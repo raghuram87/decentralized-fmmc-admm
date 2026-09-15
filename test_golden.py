@@ -157,3 +157,27 @@ def test_single_scalar_reduction_counterexample():
     w_naive = naive_single_scalar_attempt(r, kappa, a1, 2.0, 0.5, a2, 2.0, 0.5, lo, hi)
     assert np.allclose(w_true, [5 / 9, 1 / 9], atol=1e-6)
     assert np.allclose(w_naive, [1 / 3, 1 / 3], atol=1e-9)
+
+
+def test_consensus_projection_warm_start_is_fixed_point():
+    """Restarting from converged primal and dual iterates stays at the solution."""
+    from decentralized_chebyshev import CommLedger
+    from decentralized_graph_projection import (
+        build_topology, decentralized_graph_projection_consensus,
+    )
+    from experiment_consensus_projection import random_M
+    from fmmc_exact_admm import EdgeGraphProjection
+    adj = nx.to_numpy_array(nx.petersen_graph(), dtype=float)
+    proj = EdgeGraphProjection(adj)
+    neighbors, edge_index_by_node = build_topology(proj.edges, 10)
+    M = random_M(10, 3)
+    args = (proj.edges, 10, np.diag(M).copy(), np.array([M[i, j] for (i, j) in proj.edges]))
+    z, _, lam = decentralized_graph_projection_consensus(
+        *args, np.zeros(proj.m), neighbors, edge_index_by_node, 400, CommLedger(),
+        rho_cons=2.0, return_duals=True)
+    w_ref = proj.project(M)[0]
+    assert np.linalg.norm(z - w_ref) < 1e-8 * np.linalg.norm(w_ref)
+    z1, _, lam1 = decentralized_graph_projection_consensus(
+        *args, z, neighbors, edge_index_by_node, 1, CommLedger(),
+        rho_cons=2.0, lam_init=lam, return_duals=True)
+    assert np.linalg.norm(z1 - z) < 1e-8 and np.linalg.norm(lam1 - lam) < 1e-8
