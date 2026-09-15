@@ -1,6 +1,7 @@
 # decentralized-fmmc-admm
 
 [![tests](https://github.com/raghuram87/decentralized-fmmc-admm/actions/workflows/tests.yml/badge.svg)](https://github.com/raghuram87/decentralized-fmmc-admm/actions/workflows/tests.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22777862.svg)](https://doi.org/10.5281/zenodo.22777862)
 
 Python implementation and reproduction scripts for two related results on decentralized
 design of consensus weights:
@@ -85,7 +86,7 @@ visible at the six significant digits reported in the papers.
 
 ## Citation
 
-If you use this code, please cite the software (see `CITATION.cff`) and the corresponding paper.
+If you use this code, please cite the software (see `CITATION.cff`, DOI: [10.5281/zenodo.22777862](https://doi.org/10.5281/zenodo.22777862)) and the corresponding paper.
 
 ## License
 
