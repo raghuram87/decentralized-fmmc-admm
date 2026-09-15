@@ -333,8 +333,8 @@ def decentralized_graph_projection(edges, n, M_ii, M_ij_by_edge, w_init,
     # still exceeds 1 after the sweeps uniformly shrinks its OWN edges by
     # 1/S_i -- a purely local, always-feasible correction, avoiding
     # w_ii<0 -- then a final exchange re-symmetrizes the (slightly)
-    # asymmetric result. Adds exactly 2 more rounds regardless of how many
-    # sweeps ran.
+    # asymmetric result. Each pass costs 2 rounds (up to 2*rescale_passes
+    # in total), regardless of how many sweeps ran.
     # Iterated (not single-shot): rescaling both endpoints then
     # re-symmetrizing can still leave the averaged row sum slightly above 1.
     # Each pass roughly halves the largest violation (measured on the ADMM
