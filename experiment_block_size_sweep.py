@@ -4,8 +4,9 @@ Block-size sweep (technical report Section 17, "Multiplicity" limitation --
 size -- which is itself not known a priori"). This experiment quantifies
 the COST of guessing wrong: for each of the four graphs already used
 throughout this project (experiment_backend_comparison.py's build_graphs,
-each with a known steady-state active-set size k*), sweep the INITIAL block
-size b0 across values below, at, and above k*, and measure how much extra
+applying the Chebyshev oracle once to V = B_MH - J, whose active-set size k
+is known), sweep the INITIAL block size b0 across values below, at, and
+above k, and measure how much extra
 work (q_t, growth iterations) the adaptive block-growth mechanism
 (spectral_oracle.py::oracle_chebyshev) has to do to recover from an
 under-sized guess.

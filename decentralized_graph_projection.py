@@ -336,11 +336,10 @@ def decentralized_graph_projection(edges, n, M_ii, M_ij_by_edge, w_init,
     # asymmetric result. Adds exactly 2 more rounds regardless of how many
     # sweeps ran.
     # Iterated (not single-shot): rescaling both endpoints then
-    # re-symmetrizing can still leave the AVERAGED row sum slightly above 1
-    # (averaging two already-<=1-scaled views isn'''t itself guaranteed
-    # <=1) -- found empirically (a single pass cut a -0.14 violation to
-    # -0.049, better but not zero). Repeating the cheap local
-    # rescale+re-symmetrize a few times drives it to machine precision.
+    # re-symmetrizing can still leave the averaged row sum slightly above 1.
+    # Each pass roughly halves the largest violation (measured on the ADMM
+    # target of experiment_heuristic_bias.py: 5.0e-2 without correction,
+    # 1.9e-4 after 8 passes), so a few passes make it small but not zero.
     for _ in range(rescale_passes):
         scale = np.ones(n)
         for i in range(n):
