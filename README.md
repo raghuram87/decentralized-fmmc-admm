@@ -43,7 +43,7 @@ Random seeds are fixed throughout.
 | Convergence-curve figure | `make_lcss_figure.py` |
 | Sensitivity to the consensus penalty ρ_c | `experiment_rho_sensitivity.py` |
 | Dependence on graph size (cycles, hypercubes, random geometric graphs up to n = 800) | `experiment_projection_scaling.py` |
-| Warm starts along an outer ADMM trajectory | `experiment_warm_start.py` |
+| Warm starts along an outer ADMM trajectory (and per-target figure) | `experiment_warm_start.py`, `make_warm_start_figure.py` |
 | Solver for heterogeneous curvature, coefficients, and box bounds (500 trials vs. SLSQP) | `verify_node_qp_generalization.py` |
 | Counterexample with two independent couplings, w* = (5/9, 1/9) | `verify_node_qp_two_constraint_counterexample.py` |
 
