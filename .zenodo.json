@@ -4,7 +4,10 @@
   "upload_type": "software",
   "license": "MIT",
   "creators": [
-    {"name": "Nagireddy, Raghuram"}
+    {
+      "name": "Nagireddy, Raghuram",
+      "orcid": "0009-0002-2203-3367"
+    }
   ],
   "keywords": [
     "fastest mixing Markov chain",
@@ -14,5 +17,19 @@
     "Chebyshev polynomial filtering",
     "semidefinite programming",
     "doubly stochastic matrices"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.22775365",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "10.5281/zenodo.22776592",
+      "relation": "isSupplementTo",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    }
   ]
 }

@@ -10,12 +10,13 @@ design of consensus weights:
    stochastic matrices supported on a graph. It includes the node-local scalar-bisection
    solver and the project-then-average baseline, which converges to a biased fixed point.
    Paper: *A Provably Exact Distributed ADMM Projection onto Graph-Constrained Doubly
-   Stochastic Matrices*.
+   Stochastic Matrices* Extended version: [doi:10.5281/zenodo.22775365](https://doi.org/10.5281/zenodo.22775365).
 2. **Decentralized fastest mixing Markov chain (FMMC).** An edge-local ADMM for FMMC in
    which the spectral update uses a matrix-free, Chebyshev-filtered extreme-spectrum
    estimate and communication is measured in gossip rounds. Includes a
    Rokade–Kalaimani baseline and an independent SDP reference. Paper: *Communication-Aware
-   Decentralized FMMC Optimization via Edge-Local ADMM and Chebyshev Polynomial Filtering*.
+   Decentralized FMMC Optimization via Edge-Local ADMM and Chebyshev Polynomial Filtering* Extended version:
+   [doi:10.5281/zenodo.22776592](https://doi.org/10.5281/zenodo.22776592).
 
 Section numbers in docstrings refer to the extended technical report of the second paper.
 

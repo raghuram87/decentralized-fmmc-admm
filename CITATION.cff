@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Nagireddy
     given-names: Raghuram
+    orcid: "https://orcid.org/0009-0002-2203-3367"
 license: MIT
 repository-code: "https://github.com/raghuram87/decentralized-fmmc-admm"
 version: 1.0.0
