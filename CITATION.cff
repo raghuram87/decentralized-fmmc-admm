@@ -9,7 +9,7 @@ authors:
 license: MIT
 repository-code: "https://github.com/raghuram87/decentralized-fmmc-admm"
 version: 1.0.0
-date-released: "2026-09-14"
+date-released: "2026-09-15"
 keywords:
   - fastest mixing Markov chain
   - decentralized optimization
