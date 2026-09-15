@@ -66,7 +66,8 @@ Random seeds are fixed throughout.
 | Block-size sweep | `experiment_block_size_sweep.py` |
 | Adaptive gossip matrix ablation | `experiment_adaptive_communication.py` |
 | Convergence diagnostics figure (n = 50) | `make_convergence_figure.py` |
-| Peak memory per method (requires GNU `/usr/bin/time`) | `measure_memory.py` |
+| Peak memory per method, with import-only baselines (requires GNU `/usr/bin/time`) | `measure_memory.py` |
+| Topological scope of the suboptimal fixed point on long cycles | `experiment_bipartite_scope.py` |
 | Spectral-update sanity checks | `verify_oracle.py` |
 
 `experiment_true_optimum_validation.py` caches the slow CLARABEL reference solves in

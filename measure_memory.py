@@ -59,16 +59,19 @@ def measure_peak_rss_kb(snippet: str) -> float:
     return float(m.group(1))
 
 
+def import_only(snippet: str) -> str:
+    """The same snippet with its final (solve) line removed: graph setup and
+    imports only, so that peak RSS attributable to the solve itself can be
+    separated from interpreter and library-import overhead."""
+    lines = snippet.strip().splitlines()
+    return "\n".join(lines[:-1]) + "\n"
+
+
 if __name__ == "__main__":
     results = {}
-    print(f"{'method':>28} | {'peak RSS (MB)':>14}")
+    print(f"{'method':>28} | {'peak RSS (MB)':>14} | {'imports only':>12} | {'solve increment':>15}")
     for name, snippet in METHOD_SNIPPETS.items():
-        kb = measure_peak_rss_kb(snippet)
-        mb = kb / 1024.0
-        results[name] = mb
-        print(f"{name:>28} | {mb:>14.1f}")
-
-    results["DES-FMMC (Chebyshev)"] = results["Chebyshev-ADMM"]
-    results["DES-FMMC (Krylov)"] = results["Krylov-ADMM"]
-    print(f"{'DES-FMMC (Chebyshev)':>28} | {results['DES-FMMC (Chebyshev)']:>14.1f}  (= Chebyshev-ADMM, same computation)")
-    print(f"{'DES-FMMC (Krylov)':>28} | {results['DES-FMMC (Krylov)']:>14.1f}  (= Krylov-ADMM, same computation)")
+        mb = measure_peak_rss_kb(snippet) / 1024.0
+        base = measure_peak_rss_kb(import_only(snippet)) / 1024.0
+        results[name] = {"peak_mb": mb, "imports_only_mb": base, "increment_mb": mb - base}
+        print(f"{name:>28} | {mb:>14.1f} | {base:>12.1f} | {mb - base:>15.1f}", flush=True)
